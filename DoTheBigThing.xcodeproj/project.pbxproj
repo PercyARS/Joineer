@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					BC60F0EF1F0051E800805DED = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3PB6AD5K54;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -262,6 +263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3PB6AD5K54;
 				INFOPLIST_FILE = DoTheBigThing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Percy.DoTheBigThing;
@@ -274,6 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3PB6AD5K54;
 				INFOPLIST_FILE = DoTheBigThing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Percy.DoTheBigThing;
