@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     /*
-    * wo shi shabi
+    * i am new to github
     */
     override func viewDidLoad() {
         super.viewDidLoad()
