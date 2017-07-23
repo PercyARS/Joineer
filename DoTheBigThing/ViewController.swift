@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     /*
-    * wo shi sabi
+    * wo shi shabi
     */
     override func viewDidLoad() {
         super.viewDidLoad()
