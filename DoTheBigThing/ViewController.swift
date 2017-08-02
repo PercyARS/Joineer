@@ -13,6 +13,22 @@ class ViewController: UIViewController {
     /*
     * i am new to github
     */
+    
+    var signupMode = true
+    
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    
+    @IBOutlet var changeSignUpModeButton: UIButton!
+    @IBAction func changeSignUpMode(_ sender: Any) {
+    }
+    
+    @IBOutlet var signupOrLogin: UIButton!
+    
+    @IBAction func signupOrLogin(_ sender: Any) {
+    }
+    @IBOutlet var messageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
