@@ -54,7 +54,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="changeSignUpMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M2N-Gz-2O9"/>
                                     <action selector="signupOrLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UlW-oD-4Yj"/>
                                 </connections>
                             </button>
@@ -69,6 +68,9 @@
                                 <rect key="frame" x="262" y="242" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="changeSignUpMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qQx-ux-KDT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,7 +78,7 @@
                     <connections>
                         <outlet property="changeSignUpModeButton" destination="h5F-WI-9iC" id="Eht-hG-6fF"/>
                         <outlet property="emailTextField" destination="oig-qV-O6o" id="d3g-zu-iXS"/>
-                        <outlet property="messageLabel" destination="OwB-gb-Bj1" id="GMm-4O-TNP"/>
+                        <outlet property="messageLabel" destination="OwB-gb-Bj1" id="CVJ-3G-GlT"/>
                         <outlet property="passwordTextField" destination="j8I-FM-Kl8" id="89q-ww-jnT"/>
                         <outlet property="signupOrLogin" destination="LDR-7s-Z9r" id="uuP-Ix-veQ"/>
                     </connections>
