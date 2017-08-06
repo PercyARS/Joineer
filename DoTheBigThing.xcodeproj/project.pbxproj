@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C11F368C7100E5730B /* MyActivity.xcdatamodeld */; };
+		4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C41F36916900E5730B /* MyActivityViewController.swift */; };
 		BC60F0F41F0051E800805DED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60F0F31F0051E800805DED /* AppDelegate.swift */; };
 		BC60F0F61F0051E800805DED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60F0F51F0051E800805DED /* ViewController.swift */; };
 		BC60F0F91F0051E800805DED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC60F0F71F0051E800805DED /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4556A7C21F368C7100E5730B /* MyActivity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyActivity.xcdatamodel; sourceTree = "<group>"; };
+		4556A7C41F36916900E5730B /* MyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
 		BC60F0F01F0051E800805DED /* DoTheBigThing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoTheBigThing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC60F0F31F0051E800805DED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC60F0F51F0051E800805DED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +60,12 @@
 			children = (
 				BC60F0F31F0051E800805DED /* AppDelegate.swift */,
 				BC60F0F51F0051E800805DED /* ViewController.swift */,
+				4556A7C41F36916900E5730B /* MyActivityViewController.swift */,
 				BC60F0F71F0051E800805DED /* Main.storyboard */,
 				BC60F0FA1F0051E800805DED /* Assets.xcassets */,
 				BC60F0FC1F0051E800805DED /* LaunchScreen.storyboard */,
 				BC60F0FF1F0051E800805DED /* Info.plist */,
+				4556A7C11F368C7100E5730B /* MyActivity.xcdatamodeld */,
 			);
 			path = DoTheBigThing;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			files = (
 				BC60F0F61F0051E800805DED /* ViewController.swift in Sources */,
 				BC60F0F41F0051E800805DED /* AppDelegate.swift in Sources */,
+				4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */,
+				4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,8 +312,23 @@
 				BC60F1041F0051E800805DED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4556A7C11F368C7100E5730B /* MyActivity.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4556A7C21F368C7100E5730B /* MyActivity.xcdatamodel */,
+			);
+			currentVersion = 4556A7C21F368C7100E5730B /* MyActivity.xcdatamodel */;
+			name = MyActivity.xcdatamodeld;
+			path = ../MyActivity.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BC60F0E81F0051E800805DED /* Project object */;
 }

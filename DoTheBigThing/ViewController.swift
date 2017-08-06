@@ -64,6 +64,7 @@ class ViewController: UIViewController {
                 print("signed up")
                 activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
+                self.performSegue(withIdentifier: "showMainInterface" , sender: self)
                 
             }else{
                 //Login Mode
@@ -71,6 +72,7 @@ class ViewController: UIViewController {
                 /* login() */
                 activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
+                self.performSegue(withIdentifier: "showMainInterface" , sender: self)
                 
             }
             
