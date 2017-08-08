@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C11F368C7100E5730B /* MyActivity.xcdatamodeld */; };
 		4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C41F36916900E5730B /* MyActivityViewController.swift */; };
+		4556A7C71F378B9900E5730B /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C61F378B9900E5730B /* NewActivityViewController.swift */; };
+		4556A7C91F37928200E5730B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C81F37928200E5730B /* MapViewController.swift */; };
+		4556A7CC1F379CA100E5730B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556A7CB1F379CA100E5730B /* CoreLocation.framework */; };
+		4556A7CE1F37EBC300E5730B /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7CD1F37EBC300E5730B /* ActivityDetailViewController.swift */; };
 		BC60F0F41F0051E800805DED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60F0F31F0051E800805DED /* AppDelegate.swift */; };
 		BC60F0F61F0051E800805DED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60F0F51F0051E800805DED /* ViewController.swift */; };
 		BC60F0F91F0051E800805DED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC60F0F71F0051E800805DED /* Main.storyboard */; };
@@ -19,6 +23,10 @@
 /* Begin PBXFileReference section */
 		4556A7C21F368C7100E5730B /* MyActivity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyActivity.xcdatamodel; sourceTree = "<group>"; };
 		4556A7C41F36916900E5730B /* MyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
+		4556A7C61F378B9900E5730B /* NewActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
+		4556A7C81F37928200E5730B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4556A7CB1F379CA100E5730B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4556A7CD1F37EBC300E5730B /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		BC60F0F01F0051E800805DED /* DoTheBigThing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoTheBigThing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC60F0F31F0051E800805DED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC60F0F51F0051E800805DED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,17 +41,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4556A7CC1F379CA100E5730B /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4556A7CA1F379CA100E5730B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4556A7CB1F379CA100E5730B /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC60F0E71F0051E800805DED = {
 			isa = PBXGroup;
 			children = (
 				BC60F0F21F0051E800805DED /* DoTheBigThing */,
 				BC60F0F11F0051E800805DED /* Products */,
+				4556A7CA1F379CA100E5730B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +78,11 @@
 			children = (
 				BC60F0F31F0051E800805DED /* AppDelegate.swift */,
 				BC60F0F51F0051E800805DED /* ViewController.swift */,
+				4556A7C61F378B9900E5730B /* NewActivityViewController.swift */,
+				4556A7C81F37928200E5730B /* MapViewController.swift */,
 				4556A7C41F36916900E5730B /* MyActivityViewController.swift */,
 				BC60F0F71F0051E800805DED /* Main.storyboard */,
+				4556A7CD1F37EBC300E5730B /* ActivityDetailViewController.swift */,
 				BC60F0FA1F0051E800805DED /* Assets.xcassets */,
 				BC60F0FC1F0051E800805DED /* LaunchScreen.storyboard */,
 				BC60F0FF1F0051E800805DED /* Info.plist */,
@@ -144,9 +165,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC60F0F61F0051E800805DED /* ViewController.swift in Sources */,
+				4556A7C91F37928200E5730B /* MapViewController.swift in Sources */,
+				4556A7CE1F37EBC300E5730B /* ActivityDetailViewController.swift in Sources */,
 				BC60F0F41F0051E800805DED /* AppDelegate.swift in Sources */,
 				4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */,
 				4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */,
+				4556A7C71F378B9900E5730B /* NewActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
