@@ -11,21 +11,16 @@ __author__= 'Peixi Zhao'
 
 
 
-class Test(Resource):
+class Test2(Resource):
     logger = logging.getLogger('root')
 
     def post(self):
         new_mytest = request.json
         return "Received"
 
+    def get(self):
+        return {'Test': 'Empty'}
 
-    def get(self, str=None):
-        if not str:
-            return {'Test': 'Empty'}
-        self.logger.info("Received %s", str)
-        response = jsonify(data=[])
-        response.status_code = 404
-        return {'Test': str}
 
 
 

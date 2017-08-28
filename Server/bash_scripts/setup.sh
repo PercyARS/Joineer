@@ -1,19 +1,20 @@
 sudo apt update
-sudo apt install python3.6
-sudo apt install python3.6-dev
-sudo apt install python3.6-venv
+sudo apt install python3.5
+sudo apt install python3.5-dev
+sudo apt install python3.5-venv
 wget https://bootstrap.pypa.io/get-pip.py
-sudo python3.6 get-pip.py
-sudo ln -s /usr/bin/python3.6 /usr/local/bin/python3
+sudo python3.5 get-pip.py
+sudo ln -s /usr/bin/python3.5 /usr/local/bin/python3
 sudo ln -s /usr/local/bin/pip /usr/local/bin/pip3
 
-pip3.6 install MarkupSafe
-pip3.6 install pymongo
-pip3.6 install pytz
-pip3.6 install Flask
-pip3.6 install aniso8601
-pip3.6 install six
-pip3.6 install Werkzeug
-pip3.6 install wheel
-pip3.6 install Flask-PyMongo
-pip3.6 install itsdangerous
+pip3.5 install MarkupSafe
+pip3.5 install pymongo
+pip3.5 install pytz
+pip3.5 install Flask
+pip3.5 install aniso8601
+pip3.5 install six
+pip3.5 install Werkzeug
+pip3.5 install wheel
+pip3.5 install Flask-PyMongo
+pip3.5 install flask_restful
+pip3.5 install itsdangerous
