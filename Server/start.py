@@ -1,13 +1,23 @@
 __author__ = 'Peixi Zhao'
 
-from flask import Flask, request, make_response, jsonify
-from flask_restful import Resource, Api
-from bson.objectid import ObjectId
-from Server.objects_pool.joineer_flask import joineer_flask
-from Server.resources.test import Test
+'''
+    This is the temporary solution to fix the importing issue when the script is triggered 
+    through command line
+'''
+import sys
+sys.path.append('../')
 
+
+from Server.objects_pool.joineer_flask import joiner_flask
+from Server.utilities.logger import get_logger
+from Server.resources.resources_manager import add_resources
 
 
 if __name__ == '__main__':
-    app = joineer_flask().app
-    app.run(debug=True)
+    logger = get_logger('root')
+    app = joiner_flask().app
+    api = joiner_flask().api
+    logger.info("Joineer Started")
+    # use a new thread per request
+    add_resources(api)
+    app.run(debug=False, threaded=False)
