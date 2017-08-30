@@ -1,30 +1,19 @@
 from flask import Flask,make_response
-from Server.objects_pool.singleton import SingletonDecorator
-from pymongo import MongoClient
+from Server.objects.singleton import SingletonDecorator
 import logging
 import sys
 from flask_restful import Api,Resource
 from Server.utilities.mongo_json_encoder import JSONEncoder
-from Server.resources.test import Test
-from Server.resources.test2 import Test2
+from Server.objects.joineer_db import JoineerDB
 __author__ = 'Peixi Zhao'
 
 
-class joineer_flask:
+class JoineerFlask:
     app = None
     api = None
-
-    def set_up_logger(self):
-        handler = logging.StreamHandler(sys.stdout)
-        handler.setFormatter(logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-        self.app.logger.addHandler(handler)
-        self.app.logger.setLevel(logging.DEBUG)
+    db = None
 
 
-    def get_db(self):
-        client = MongoClient('localhost', 27017)
-        return client.joineer_database
 
     def get_api(self):
         api = Api(self.app)
@@ -38,11 +27,21 @@ class joineer_flask:
 
     def __init__(self):
         self.app = Flask("Joineer")
-        self.app.db = self.get_db()
+        self.app.db = JoineerDB()
         self.app.config['TRAP_BAD_REQUEST_ERRORS'] = True
         # Allow for special characters
         self.app.config['JSON_AS_ASCII'] = False
         self.api = self.get_api()
         self.set_up_logger()
 
-joiner_flask = SingletonDecorator(joineer_flask)
+
+    def set_up_logger(self):
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+        self.app.logger.addHandler(handler)
+        self.app.logger.setLevel(logging.DEBUG)
+
+
+# Making the class singleton
+JoineerFlask = SingletonDecorator(JoineerFlask)

@@ -8,15 +8,15 @@ import sys
 sys.path.append('../')
 
 
-from Server.objects_pool.joineer_flask import joiner_flask
+from Server.objects.joineer_flask import JoineerFlask
 from Server.utilities.logger import get_logger
 from Server.resources.resources_manager import add_resources
 
 
 if __name__ == '__main__':
     logger = get_logger('root')
-    app = joiner_flask().app
-    api = joiner_flask().api
+    app = JoineerFlask().app
+    api = JoineerFlask().api
     logger.info("Joineer Started")
     # use a new thread per request
     add_resources(api)
