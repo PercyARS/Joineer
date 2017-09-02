@@ -19,3 +19,4 @@ pip3.5 install wheel
 pip3.5 install Flask-PyMongo
 pip3.5 install flask_restful
 pip3.5 install itsdangerous
+pip3.5 install bcrypt
