@@ -11,9 +11,6 @@ __author__ = 'Peixi Zhao'
 class JoineerFlask:
     app = None
     api = None
-    db = None
-
-
 
     def get_api(self):
         api = Api(self.app)
@@ -31,6 +28,10 @@ class JoineerFlask:
         self.app.config['TRAP_BAD_REQUEST_ERRORS'] = True
         # Allow for special characters
         self.app.config['JSON_AS_ASCII'] = False
+        # Bundle reqparser errors into one json
+        self.app.config['BUNDLE_ERRORS'] = True
+        # Define the encryption difficulty
+        self.app.bcrypt_rounds = 12
         self.api = self.get_api()
         self.set_up_logger()
 

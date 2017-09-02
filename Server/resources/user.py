@@ -1,21 +1,54 @@
 __author__ = 'Peixi Zhao'
-from flask_restful import Resource,reqparse, abort, Api
-from flask import request, jsonify
+from flask_restful import Resource,reqparse
+from flask import request, jsonify, make_response
+from Server.objects.joineer_db import JoineerDB
+from Server.objects.joineer_flask import JoineerFlask
+from bson.objectid import ObjectId
 import logging
+import bcrypt
+
+
+logger = logging.getLogger('root')
+parser = reqparse.RequestParser()
+parser.add_argument('username', required=True, type=str)
+parser.add_argument('gender', required=True, type=bool)
+parser.add_argument('password', required=True, type=str)
+parser.add_argument('age', required=True, type=int)
+
+'''
+    In charge of user creation and validation on user id 
+'''
 
 
 class Users(Resource):
-    logger = logging.getLogger('root')
+    collection = JoineerDB().db.users
 
     def post(self):
-        new_mytest = request.json
-        return "Received"
+        args = parser.parse_args(strict=True)
+        # If the username already exists
+        if self.collection.find({"username": args["username"]}).count() > 0:
+            logger.info("Attempted to Creat Username:" + args["username"] + " That Already Exists")
+            resp = jsonify({args["username"]:"exists"})
+            resp.status_code = 401
+            return resp
+        # encrypt the password
+        encoded_password = args["password"].encode('utf-8')
+        hashed_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt(JoineerFlask().app.bcrypt_rounds))
+        args["password"] = hashed_password
+        result = self.collection.insert_one(args)
+        logger.info("Added User Id: " + str(result.inserted_id))
+        resp = jsonify({str(result.inserted_id): "created"})
+        resp.status_code = 201
+        return resp
 
-
-    def get(self, str=None):
-        if not str:
-            return {'Test': 'Empty'}
-        self.logger.info("Received %s", str)
-        response = jsonify(data=[])
-        response.status_code = 404
-        return {'Test': str}
+    def get(self, user_id):
+        logger.info("Attempted check if %s exists", user_id)
+        user_profile = self.collection.find_one({"_id": ObjectId(user_id)})
+        if user_profile is None:
+            resp = jsonify({user_id:"doesn't exist"})
+            resp.status_code = 404
+            return resp
+        else:
+            resp = jsonify({user_id:"exists"})
+            resp.status_code = 200
+            return resp
