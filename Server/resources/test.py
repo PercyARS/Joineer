@@ -17,8 +17,9 @@ class Test(Resource):
     parser.add_argument('task')
 
     def post(self):
-        new_mytest = request.json
-        return "Received"
+        test_json = request.json
+        self.logger.info("Received Post json: " + str(test_json))
+        return test_json
 
 
     def get(self, str=None):
