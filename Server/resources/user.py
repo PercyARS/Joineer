@@ -1,12 +1,11 @@
 __author__ = 'Peixi Zhao'
-from flask_restful import Resource,reqparse
+from flask_restful import Resource, reqparse
 from flask import request, jsonify, make_response
 from Server.objects.joineer_db import JoineerDB
 from Server.objects.joineer_flask import JoineerFlask
 from bson.objectid import ObjectId
 import logging
 import bcrypt
-
 
 logger = logging.getLogger('root')
 parser = reqparse.RequestParser()
@@ -28,7 +27,7 @@ class Users(Resource):
         # If the username already exists
         if self.collection.find({"username": args["username"]}).count() > 0:
             logger.info("Attempted to Creat Username:" + args["username"] + " That Already Exists")
-            resp = jsonify({args["username"]:"exists"})
+            resp = jsonify({args["username"]: "exists"})
             resp.status_code = 401
             return resp
         # encrypt the password
@@ -45,10 +44,10 @@ class Users(Resource):
         logger.info("Attempted check if %s exists", user_id)
         user_profile = self.collection.find_one({"_id": ObjectId(user_id)})
         if user_profile is None:
-            resp = jsonify({user_id:"doesn't exist"})
+            resp = jsonify({user_id: "doesn't exist"})
             resp.status_code = 404
             return resp
         else:
-            resp = jsonify({user_id:"exists"})
+            resp = jsonify({user_id: "exists"})
             resp.status_code = 200
             return resp

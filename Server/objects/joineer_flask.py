@@ -1,10 +1,11 @@
-from flask import Flask,make_response
+from flask import Flask, make_response
 from Server.objects.singleton import SingletonDecorator
 import logging
 import sys
-from flask_restful import Api,Resource
+from flask_restful import Api, Resource
 from Server.utilities.mongo_json_encoder import JSONEncoder
 from Server.objects.joineer_db import JoineerDB
+
 __author__ = 'Peixi Zhao'
 
 
@@ -14,13 +15,14 @@ class JoineerFlask:
 
     def get_api(self):
         api = Api(self.app)
+
         @api.representation('application/json')
         def output_json(data, code, headers=None):
             resp = make_response(JSONEncoder().encode(data), code)
             resp.headers.extend(headers or {})
             return resp
-        return api
 
+        return api
 
     def __init__(self):
         self.app = Flask("Joineer")
@@ -34,7 +36,6 @@ class JoineerFlask:
         self.app.bcrypt_rounds = 12
         self.api = self.get_api()
         self.set_up_logger()
-
 
     def set_up_logger(self):
         handler = logging.StreamHandler(sys.stdout)

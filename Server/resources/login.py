@@ -2,7 +2,7 @@ __author__ = 'Peixi Zhao'
 
 from Server.objects.joineer_db import JoineerDB
 import bcrypt
-from flask_restful import Resource,reqparse
+from flask_restful import Resource, reqparse
 import logging
 from flask import jsonify
 
@@ -37,11 +37,11 @@ def check_auth(username, password):
 class Login(Resource):
     def post(self):
         args = parser.parse_args(strict=True)
-        if (check_auth(args["username"],args["password"])):
+        if (check_auth(args["username"], args["password"])):
             resp = jsonify({"password": "verified"})
             resp.status_code = 200
             return resp
         else:
-            resp = jsonify({"password":"incorrect"})
+            resp = jsonify({"password": "incorrect"})
             resp.status_code = 401
             return resp
