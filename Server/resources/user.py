@@ -42,12 +42,11 @@ class Users(Resource):
 
     def get(self, user_id):
         logger.info("Attempted check if %s exists", user_id)
-        user_profile = self.collection.find_one({"_id": ObjectId(user_id)})
-        if user_profile is None:
-            resp = jsonify({user_id: "doesn't exist"})
+        user_profile_without_pw = self.collection.find_one({"_id": ObjectId(user_id)}, {"password":0})
+        if user_profile_without_pw is None:
+            resp = jsonify({user_id: "does not exist"})
             resp.status_code = 404
             return resp
         else:
-            resp = jsonify({user_id: "exists"})
-            resp.status_code = 200
-            return resp
+            logger.debug("User profile retrieved: " + str(user_profile_without_pw))
+            return user_profile_without_pw
