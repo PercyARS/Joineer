@@ -6,6 +6,7 @@ import sys
 from Server.objects.singleton import SingletonDecorator
 from Server.states.states import State
 import logging
+
 '''
     State transition mapping
 '''
@@ -14,7 +15,7 @@ logger = logging.getLogger('root')
 
 
 def get_all_user_states():
-    all_states  = inspect.getmembers(sys.modules[__name__], inspect.isclass)
+    all_states = inspect.getmembers(sys.modules[__name__], inspect.isclass)
     logger.debug("All User States: " + all_states)
     return all_states
 
