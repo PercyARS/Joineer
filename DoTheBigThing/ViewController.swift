@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var signupMode = true
     var activityIndicator = UIActivityIndicatorView()
     
+    @IBOutlet var genderTextField: UITextField!
+    @IBOutlet var ageTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
@@ -28,6 +30,8 @@ class ViewController: UIViewController {
             signupOrLogin.setTitle("Log In", for: [])
             changeSignUpModeButton.setTitle("Sign Up", for: [])
             messageLabel.text = "Don't have an account?"
+            ageTextField.alpha = 0
+            genderTextField.alpha = 0
             signupMode = false
             
         }else{
@@ -35,6 +39,8 @@ class ViewController: UIViewController {
             signupOrLogin.setTitle("Sign Up", for: [])
             changeSignUpModeButton.setTitle("Log In", for: [])
             messageLabel.text = "Already have an account?"
+            ageTextField.alpha = 1
+            genderTextField.alpha = 1
             signupMode = true
         }
     }
@@ -50,30 +56,52 @@ class ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         }else{
-            activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            activityIndicator.center = self.view.center
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-            UIApplication.shared.beginIgnoringInteractionEvents()
-        
             if signupMode {
-                
-                //Sign Up
-                // backend signup func here//
-                /* signugp()*/
-                print("signed up")
-                activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.performSegue(withIdentifier: "showMainInterface" , sender: self)
+                if ageTextField.text == "" || genderTextField.text == "" {
+                    let alert = UIAlertController(title: "Error in form", message: "Please enter age and gender", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK" , style: .default, handler: { (action) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }else{
+                    let newSignUpUser = BTUser()
+                    newSignUpUser.usersignUp(userName: self.emailTextField.text!, password: self.passwordTextField.text!, age: self.ageTextField.text!, gender: self.genderTextField.text!, completion: {response in
+                        print(response)
+                        print("wtf")
+                        DispatchQueue.main.sync{
+                            let alert = UIAlertController(title: "SignUp", message: response, preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK" , style: .default, handler: { (action) in
+                                self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                    })
+                }
                 
             }else{
-                //Login Mode
-                // backend login func here
-                /* login() */
-                activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.performSegue(withIdentifier: "showMainInterface" , sender: self)
+                let newLoginUser = BTUser()
+                newLoginUser.userLogin(userID: self.emailTextField.text!, password: self.passwordTextField.text!, completion: {response in
+                    print(response)
+                    print("wtf")
+                    if newLoginUser.isCurrent(){
+                        DispatchQueue.main.sync {
+                            self.performSegue(withIdentifier: "showMainInterface" , sender: self)
+                        }
+                    }else{
+                        DispatchQueue.main.sync{
+                            let alert = UIAlertController(title: "SignUp", message: response, preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK" , style: .default, handler: { (action) in
+                                self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                    }
+                    
+                })
+                
                 
             }
             
@@ -83,7 +111,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //let newUser = BTUser()
+        //newUser.userLogin(userID: "xyz", password: "xyz", completion: {response in
+           // print(response)
+            //print(newUser.isCurrent())
+       // })
+        
+        
         /*
+        newUser.genPostRequest(input: testInput, resource: "login/", completion: { response in
+            print(response["data"]!)
+        })
+        
+        newUser.genGetRequest(resource: "users/59aa2fb64cdde4609f98ca06", completion: { response in
+            print(response)
+        })
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
@@ -98,6 +141,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+
+    
+
     
 
     override func didReceiveMemoryWarning() {
