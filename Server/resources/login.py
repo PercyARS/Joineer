@@ -37,11 +37,12 @@ def check_auth(username, password):
 class Login(Resource):
     def post(self):
         args = parser.parse_args(strict=True)
-        if (check_auth(args["username"], args["password"])):
-            resp = jsonify({"password": "verified"})
+        if check_auth(args["username"], args["password"]):
+            user = users_collection.find_one({'username': args["username"]})
+            resp = jsonify({"userID": str(user["_id"]), "password": "verified"})
             resp.status_code = 200
             return resp
         else:
-            resp = jsonify({"password": "incorrect"})
+            resp = jsonify({"password/username": "incorrect"})
             resp.status_code = 401
             return resp

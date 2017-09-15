@@ -27,7 +27,8 @@ class Users(Resource):
         # If the username already exists
         if self.collection.find({"username": args["username"]}).count() > 0:
             logger.info("Attempted to Creat Username:" + args["username"] + " That Already Exists")
-            resp = jsonify({args["username"]: "exists"})
+            existing_profile = self.collection.find_one({"username":args["username"]})
+            resp = jsonify({"userID": str(existing_profile["_id"]), "status": "exists"})
             resp.status_code = 401
             return resp
         # encrypt the password
@@ -36,7 +37,7 @@ class Users(Resource):
         args["password"] = hashed_password
         result = self.collection.insert_one(args)
         logger.info("Added User Id: " + str(result.inserted_id))
-        resp = jsonify({str(result.inserted_id): "created"})
+        resp = jsonify({"userID": str(result.inserted_id), "status": "created"})
         resp.status_code = 201
         return resp
 
@@ -44,7 +45,7 @@ class Users(Resource):
         logger.info("Attempted check if %s exists", user_id)
         user_profile_without_pw = self.collection.find_one({"_id": ObjectId(user_id)}, {"password":0})
         if user_profile_without_pw is None:
-            resp = jsonify({user_id: "does not exist"})
+            resp = jsonify({"userID": user_id, "status": "does not exist"})
             resp.status_code = 404
             return resp
         else:

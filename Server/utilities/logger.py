@@ -23,10 +23,12 @@ def get_logger(name):
     file_handler = RotatingFileHandler('log/Server.log', maxBytes=100000000, backupCount=1)
     console_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
+    console_handler.setLevel(logging.INFO)
+    file_handler.setLevel(logging.DEBUG)
     logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
+    logger.setLevel(logging.DEBUG)
     return logger
 
 '''
@@ -35,13 +37,15 @@ def get_logger(name):
 
 
 def get_flask_logger(logger):
-    handler = logging.StreamHandler(sys.stdout)
-    handler.setFormatter(logging.Formatter(
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    logger.addHandler(handler)
+    console_handler.setLevel(logging.INFO)
+    logger.addHandler(console_handler)
     # max log size of 100 mb, no rotation needed
-    handler = RotatingFileHandler('log/Server.log', maxBytes=100000000, backupCount=1)
-    handler.setFormatter(logging.Formatter(
+    file_handler = RotatingFileHandler('log/Server.log', maxBytes=100000000, backupCount=1)
+    file_handler.setFormatter(logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    logger.addHandler(handler)
+    file_handler.setLevel(logging.DEBUG)
+    logger.addHandler(file_handler)
     logger.setLevel(logging.DEBUG)
