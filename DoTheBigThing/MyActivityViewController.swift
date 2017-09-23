@@ -11,6 +11,16 @@ import CoreData
 
 class MyActivityViewController: UITableViewController {
     
+    @IBAction func logOutButton(_ sender: Any) {
+        
+        UserDefaults.standard.set(false, forKey: "loginState")
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let loginController = storyBoard.instantiateViewController(withIdentifier: "LogIn") 
+        UIApplication.shared.keyWindow?.rootViewController = loginController
+        UIApplication.shared.keyWindow?.makeKeyAndVisible()
+    }
+    
+
     var activitiesArray = [NSManagedObject]()
     
     func loadActivitiesData(){
@@ -28,14 +38,18 @@ class MyActivityViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(true, forKey: "loginState")
         self.loadActivitiesData()
         tableView.reloadData()
+
 
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        UserDefaults.standard.set(true, forKey: "loginState")
         self.loadActivitiesData()
         tableView.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {

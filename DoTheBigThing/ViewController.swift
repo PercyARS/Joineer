@@ -109,9 +109,11 @@ class ViewController: UIViewController {
     }
     @IBOutlet var messageLabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let newUser = BTUser()
+
+                //let newUser = BTUser()
         //newUser.userLogin(userID: "xyz", password: "xyz", completion: {response in
            // print(response)
             //print(newUser.isCurrent())

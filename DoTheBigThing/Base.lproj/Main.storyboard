@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LogIn-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="LogIn" storyboardIdentifier="LogIn" title="LogIn" id="BYZ-38-t0r" customClass="ViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -259,6 +259,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Activities" id="8a1-o1-2LX">
+                        <barButtonItem key="leftBarButtonItem" title="LogOut" id="97Z-eb-KXC">
+                            <connections>
+                                <action selector="logOutButton:" destination="qAR-nU-m6G" id="jKD-x6-rdE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="73k-S3-wUz">
                             <connections>
                                 <segue destination="GZQ-Oq-zy6" kind="show" identifier="createNewActivity" id="7TM-Qr-CZK"/>
@@ -387,7 +392,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xb-j3-4wb">
-                                <rect key="frame" x="232" y="381" width="69" height="30"/>
+                                <rect key="frame" x="232" y="352" width="69" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Publish"/>
                             </button>
@@ -498,7 +503,7 @@
         <!--Item-->
         <scene sceneID="6nC-e6-Wah">
             <objects>
-                <navigationController id="OE0-pi-Myl" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="mainInterface" storyboardIdentifier="mainInterface" id="OE0-pi-Myl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="7NA-65-3PV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ERv-pO-j5V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -533,6 +538,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hcy-fI-qYs"/>
+        <segue reference="60c-k5-eng"/>
     </inferredMetricsTieBreakers>
 </document>

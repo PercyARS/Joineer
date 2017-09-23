@@ -13,10 +13,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var storyBoard: UIStoryboard?
+    
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let loginState = UserDefaults.standard.bool(forKey: "loginState")
+        self.storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if loginState {
+            self.window?.rootViewController = self.storyBoard?.instantiateViewController(withIdentifier: "mainInterface")
+        }else{
+            self.window?.rootViewController = self.storyBoard?.instantiateInitialViewController()
+        }
+
         return true
     }
 
