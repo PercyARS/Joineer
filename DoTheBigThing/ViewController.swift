@@ -88,7 +88,12 @@ class ViewController: UIViewController {
                     if newLoginUser.isCurrent(){
                         DispatchQueue.main.sync {
                             self.performSegue(withIdentifier: "showMainInterface" , sender: self)
+                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                            let loginController = storyBoard.instantiateViewController(withIdentifier: "mainInterface")
+                            UIApplication.shared.keyWindow?.rootViewController = loginController
+                            UIApplication.shared.keyWindow?.makeKeyAndVisible()
                         }
+                        
                     }else{
                         DispatchQueue.main.sync{
                             let alert = UIAlertController(title: "SignUp", message: response, preferredStyle: UIAlertControllerStyle.alert)

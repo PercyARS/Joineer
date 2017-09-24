@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45140C441F5DF61900043CF6 /* BTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45140C431F5DF61900043CF6 /* BTUser.swift */; };
+		454C2E1B1F7713E300F8CEC2 /* BTEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454C2E1A1F7713E300F8CEC2 /* BTEvent.swift */; };
 		4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C11F368C7100E5730B /* MyActivity.xcdatamodeld */; };
 		4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C41F36916900E5730B /* MyActivityViewController.swift */; };
 		4556A7C71F378B9900E5730B /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C61F378B9900E5730B /* NewActivityViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		45140C431F5DF61900043CF6 /* BTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTUser.swift; sourceTree = "<group>"; };
+		454C2E1A1F7713E300F8CEC2 /* BTEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTEvent.swift; sourceTree = "<group>"; };
 		4556A7C21F368C7100E5730B /* MyActivity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyActivity.xcdatamodel; sourceTree = "<group>"; };
 		4556A7C41F36916900E5730B /* MyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
 		4556A7C61F378B9900E5730B /* NewActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				45140C431F5DF61900043CF6 /* BTUser.swift */,
+				454C2E1A1F7713E300F8CEC2 /* BTEvent.swift */,
 				BC60F0F31F0051E800805DED /* AppDelegate.swift */,
 				BC60F0F51F0051E800805DED /* ViewController.swift */,
 				4556A7C61F378B9900E5730B /* NewActivityViewController.swift */,
@@ -171,6 +174,7 @@
 				4556A7C91F37928200E5730B /* MapViewController.swift in Sources */,
 				4556A7CE1F37EBC300E5730B /* ActivityDetailViewController.swift in Sources */,
 				BC60F0F41F0051E800805DED /* AppDelegate.swift in Sources */,
+				454C2E1B1F7713E300F8CEC2 /* BTEvent.swift in Sources */,
 				45140C441F5DF61900043CF6 /* BTUser.swift in Sources */,
 				4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */,
 				4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */,
@@ -300,6 +304,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3PB6AD5K54;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DoTheBigThing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Percy.DoTheBigThing;
@@ -313,6 +321,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3PB6AD5K54;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DoTheBigThing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Percy.DoTheBigThing;
