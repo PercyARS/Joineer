@@ -17,7 +17,7 @@ class NewActivityViewController: UIViewController {
     @IBOutlet var peopleCountTextField: UITextField!
     @IBOutlet var paymentTextField: UITextField!
     @IBOutlet var maxPeopleCountTextField: UITextField!
-    var newEvent: BTEvent = BTEvent()
+    var newEvent: BTEvent!
     @IBOutlet var genderConstraintTextField: UITextField!
     @IBOutlet var minAgeConstraintTextField: UITextField!
     @IBOutlet var maxAgeConstraintTextField: UITextField!
@@ -78,7 +78,7 @@ class NewActivityViewController: UIViewController {
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else{
-                UserDefaults.standard.set(maxCount, forKey: "eventHeadCount")
+                self.newEvent.saveEventInfo(title: self.titleTextField.text!, minHeadcount: self.maxPeopleCountTextField.text!, maxHeadcount: self.maxPeopleCountTextField.text!, payment: self.paymentTextField.text!)
                 self.performSegue(withIdentifier: "toAddConstraint", sender: self)
             }
             
@@ -87,7 +87,6 @@ class NewActivityViewController: UIViewController {
     }
     
     @IBAction func contraintSubmit(_ sender: Any) {
-        self.newEvent = UserDefaults.standard.object(forKey: "currentEvent") as! BTEvent
         let constraintResult = self.newEvent.saveConstraints(minAge: minAgeConstraintTextField.text!, maxAge: maxAgeConstraintTextField.text!, gender: genderConstraintTextField.text!, headCount: countConstraintTextField.text!)
         
         if constraintResult != "Constraint added" {
@@ -97,9 +96,10 @@ class NewActivityViewController: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         }else{
-            UserDefaults.standard.set(self.newEvent, forKey: "currentEvent")
             let sth = self.newEvent.getConstraintsArray()
             print (sth)
+            navigationController?.popViewController(animated: true)
+            //self.performSegue(withIdentifier: "constraintToActivity", sender: self)
             
         }
     }
@@ -110,8 +110,49 @@ class NewActivityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    /*override func viewDidAppear(_ animated: Bool) {
+        var maxCountTemp: String? = nil
+        var minCountTemp: String? = nil
+        var paymentTemp: String? = nil
+        var titleTemp: String? = nil
+        if self.newEvent.getEventTitle() != nil {
+            titleTemp = String(describing: self.newEvent.getEventTitle())
+            self.titleTextField.text = titleTemp
+        }
+        if self.newEvent.getEventAmount() != nil {
+            paymentTemp = String(describing: self.newEvent.getEventAmount())
+            self.paymentTextField.text = paymentTemp
+        }
+        if self.newEvent.getMaxEventHeadCount() != nil {
+            maxCountTemp = String(describing: self.newEvent.getMaxEventHeadCount())
+            self.maxPeopleCountTextField.text = maxCountTemp
+        }
+        if self.newEvent.getEventHeadCount() != nil {
+            minCountTemp = String(describing: self.newEvent.getEventHeadCount())
+            self.peopleCountTextField.text = minCountTemp
+        }
+
+        
+        
+        
+    }*/
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "constraintToActivity" {
+            let nextScene = segue.destination as! NewActivityViewController
+            let selectedEvent = self.newEvent
+            nextScene.newEvent = selectedEvent
+        }
+        if segue.identifier == "toAddConstraint" {
+            let nextScene = segue.destination as! NewActivityViewController
+            let selectedEvent = self.newEvent
+            nextScene.newEvent = selectedEvent
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

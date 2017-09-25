@@ -112,6 +112,13 @@ class MyActivityViewController: UITableViewController {
             
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createNewActivity" {
+            let nextScene = segue.destination as! NewActivityViewController
+            let newEvent = BTEvent()
+            nextScene.newEvent = newEvent
+        }
+    }
  
 
     /*

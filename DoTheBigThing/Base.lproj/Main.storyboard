@@ -300,6 +300,7 @@
                         <outlet property="genderConstraintTextField" destination="cFn-gs-RVx" id="ic1-Vn-tcB"/>
                         <outlet property="maxAgeConstraintTextField" destination="dyR-bI-XaM" id="8fi-SZ-QIx"/>
                         <outlet property="minAgeConstraintTextField" destination="tLv-Zp-qac" id="kbM-8V-meO"/>
+                        <segue destination="GZQ-Oq-zy6" kind="showDetail" identifier="constraintToActivity" id="g60-PX-GST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhw-0V-Svt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -626,6 +627,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="g60-PX-GST"/>
         <segue reference="Hcy-fI-qYs"/>
     </inferredMetricsTieBreakers>
 </document>
