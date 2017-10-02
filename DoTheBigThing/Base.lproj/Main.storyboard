@@ -354,7 +354,7 @@
         <!--New Activity-->
         <scene sceneID="ftF-et-1VS">
             <objects>
-                <viewController title="New Activity" id="GZQ-Oq-zy6" customClass="NewActivityViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="NewActivityViewController" storyboardIdentifier="NewActivityViewController" title="New Activity" id="GZQ-Oq-zy6" customClass="NewActivityViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Drq-7a-EbN"/>
                         <viewControllerLayoutGuide type="bottom" id="G5G-zq-Lir"/>
@@ -427,7 +427,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQ8-t2-UTz">
-                                <rect key="frame" x="102" y="239" width="257" height="30"/>
+                                <rect key="frame" x="102" y="239" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -461,13 +461,16 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="GZQ-Oq-zy6" eventType="touchUpInside" id="nta-6k-CHf"/>
-                                    <segue destination="qAR-nU-m6G" kind="show" identifier="toMyActivityView" id="Hcy-fI-qYs"/>
+                                    <segue destination="qAR-nU-m6G" kind="showDetail" identifier="toMyActivityView" action="showViewController:sender:" id="Hcy-fI-qYs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xb-j3-4wb">
                                 <rect key="frame" x="232" y="352" width="69" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Publish"/>
+                                <connections>
+                                    <action selector="publishEvent:" destination="GZQ-Oq-zy6" eventType="touchUpInside" id="fWz-6x-TGc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVU-Lz-btA">
                                 <rect key="frame" x="102" y="276" width="145" height="30"/>
@@ -491,12 +494,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mo1-Aq-Zc4">
+                                <rect key="frame" x="175" y="245" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkW-dJ-zpM">
+                                <rect key="frame" x="293" y="245" width="52" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sum"/>
+                                <connections>
+                                    <action selector="changePayment:" destination="GZQ-Oq-zy6" eventType="touchUpInside" id="HD3-5m-61d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="dateTextField" destination="6i5-Vi-ujj" id="04W-SZ-ero"/>
                         <outlet property="maxPeopleCountTextField" destination="KJh-R3-rzd" id="jwD-72-fwy"/>
+                        <outlet property="paymentSytleButton" destination="VkW-dJ-zpM" id="B15-L1-cPK"/>
                         <outlet property="paymentTextField" destination="CQ8-t2-UTz" id="wDc-Bp-kTW"/>
                         <outlet property="peopleCountTextField" destination="X0u-lr-LZ0" id="CJ9-dE-V3e"/>
                         <outlet property="timeTextField" destination="Gx5-NY-iBk" id="SCL-Fa-XTt"/>
@@ -627,7 +646,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g60-PX-GST"/>
+        <segue reference="7TM-Qr-CZK"/>
         <segue reference="Hcy-fI-qYs"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,7 +22,17 @@ class NewActivityViewController: UIViewController {
     @IBOutlet var minAgeConstraintTextField: UITextField!
     @IBOutlet var maxAgeConstraintTextField: UITextField!
     @IBOutlet var countConstraintTextField: UITextField!
+    @IBOutlet var paymentSytleButton: UIButton!
     
+    @IBAction func changePayment(_ sender: Any) {
+        if self.newEvent.getPaymentStyle() {
+            paymentSytleButton.setTitle("PP", for: [])
+            self.newEvent.setPaymentStyle(style: false)
+        }else{
+            paymentSytleButton.setTitle("Sum", for: [])
+            self.newEvent.setPaymentStyle(style: true)
+        }
+    }
     
     
     @IBAction func saveButton(_ sender: Any) {
@@ -104,8 +114,14 @@ class NewActivityViewController: UIViewController {
         }
     }
     
+    @IBAction func publishEvent(_ sender: Any) {
+        self.newEvent.populateEventDict()
+        print (self.newEvent.getEventDictionary())
+    }
     
-    
+    func setEventLocation(lat: String, long: String) -> Void {
+        self.newEvent.setEventLocation(latitude: lat, longitude: long)
+    }
     
 
     override func viewDidLoad() {
@@ -142,11 +158,11 @@ class NewActivityViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "constraintToActivity" {
+       /* if segue.identifier == "toMap" {
             let nextScene = segue.destination as! NewActivityViewController
             let selectedEvent = self.newEvent
             nextScene.newEvent = selectedEvent
-        }
+        } */
         if segue.identifier == "toAddConstraint" {
             let nextScene = segue.destination as! NewActivityViewController
             let selectedEvent = self.newEvent

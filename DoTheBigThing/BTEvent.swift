@@ -9,13 +9,24 @@
 import UIKit
 
 class BTEvent {
-    var paymentStyle = false
+    var paymentStyle = true
     var constraintsArray: [Dictionary<String, AnyObject>] = []
     var eventDictionary = [String: AnyObject]()
     var eventHeadCount: Int? = nil
     var maxEventHeadCount: Int? = nil
     var eventPayAmount: Double? = nil
     var eventTitle: String? = nil
+    var latitude: String? = nil
+    var longitude: String? = nil
+    var coordinate = [String: String]()
+    
+    func getPaymentStyle() -> Bool {
+        return self.paymentStyle
+    }
+    
+    func setPaymentStyle(style: Bool) -> Void {
+        self.paymentStyle = style
+    }
     
     func getEventHeadCount() -> Int {
         return self.eventHeadCount!
@@ -53,6 +64,48 @@ class BTEvent {
         self.eventPayAmount = payment
     }
     
+    func getEventDictionary() -> [String: AnyObject] {
+        return self.eventDictionary
+    }
+    
+    func getLatitude() -> String {
+        return self.latitude!
+    }
+    
+    func setLatitude(lat: String) -> Void {
+        self.latitude = lat
+    }
+    
+    func getLongitude() -> String {
+        return self.longitude!
+    }
+    
+    func setLongitude(long: String) -> Void {
+        self.longitude = long
+    }
+    
+    func setEventLocation(latitude: String, longitude: String) -> Void {
+        self.setLatitude(lat: latitude)
+        self.setLongitude(long: longitude)
+        //self.coordinate["latitude"] = self.getLatitude()
+        //self.coordinate["longitude"] = self.getLongitude()
+    }
+    
+    func getEventLocation() -> [String: String] {
+        return self.coordinate
+    }
+    
+    func addCoordinates(coordinates:[String: String]) -> Void {
+        self.eventDictionary["location"] = self.getEventLocation() as AnyObject
+    }
+    
+    func calculateEventAmount() -> Void {
+        if self.getPaymentStyle(){
+            self.setEventAmount(payment: self.getEventAmount())
+        }else{
+            self.setEventAmount(payment: self.getEventAmount() * Double(self.getMaxEventHeadCount()))
+        }
+    }
     
     
     func saveEventInfo(title: String, minHeadcount: String, maxHeadcount:String, payment: String) -> Void {
@@ -74,6 +127,20 @@ class BTEvent {
             self.setEventAmount(payment: temp!)
         }
 
+    }
+    
+    func populateEventDict() -> Void {
+        self.eventDictionary["title"] = self.getEventTitle() as AnyObject
+        
+        var headCountDict = [String: Int]()
+        headCountDict["min"] = self.getEventHeadCount()
+        headCountDict["max"] = self.getMaxEventHeadCount()
+        self.eventDictionary["headcount"] = headCountDict as AnyObject
+        
+        self.eventDictionary["payment"] = self.getEventAmount() as AnyObject
+        
+        self.eventDictionary["constraint"] = self.getConstraintsArray() as AnyObject
+        
     }
     
     func saveConstraints(minAge: String, maxAge:String, gender:String, headCount:String) -> String {
@@ -99,7 +166,7 @@ class BTEvent {
             return "Please enter a Headcount"
         }
         if min_Age != nil && max_Age != nil{
-            if min_Age! < max_Age!{
+            if min_Age! > max_Age!{
                 return "Min Age is more than Max Age!"
             }
         }

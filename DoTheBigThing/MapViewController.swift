@@ -12,6 +12,8 @@ import CoreLocation
 
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    var newEvent: BTEvent!
 
     @IBOutlet var mapField: MKMapView!
     var manager = CLLocationManager()
@@ -44,15 +46,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotation.title = "Location Selected"
             self.mapField.addAnnotation(annotation)
             let location = CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude)
+            
+            let eventLatitude = String(newCoordinates.latitude)
+            let eventLongitude = String(newCoordinates.longitude)
+            let newActivityVC = NewActivityViewController()
+            print(eventLatitude)
+            print(eventLongitude)
+            newActivityVC.newEvent.setEventLocation(latitude: eventLatitude, longitude: eventLatitude)
+            
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 if error != nil{
                     print (error!)
-                    
                 } else{
                     if let placemark = placemarks?[0] {
                         if placemark.locality != nil {
                             let city = placemark.locality
                             UserDefaults.standard.set(city, forKey: "city")
+                            self.navigationController?.popViewController(animated: true)
                         }
                         
                     }
