@@ -3,7 +3,7 @@ __author__ = 'Peixi Zhao'
 import json
 from bson.objectid import ObjectId
 from datetime import date, datetime
-
+import pymongo
 
 # Custom JSONEncoder that extracts the strings from special types
 class JSONEncoder(json.JSONEncoder):
