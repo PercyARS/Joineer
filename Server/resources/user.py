@@ -38,7 +38,6 @@ class Users(Resource):
         user_profile_without_pw = cls.collection.find_one({"_id": ObjectId(user_id)}, {"password":0})
         return user_profile_without_pw
 
-
     def post(self):
         args = self.parser.parse_args(strict=True)
         # If the username already exists

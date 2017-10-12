@@ -5,19 +5,20 @@ from Server.objects.singleton import SingletonDecorator
 import urllib.parse
 import logging
 
-logger = logging.getLogger('root')
 
 
 class JoineerDB:
     db = None
+    logger = logging.getLogger('root')
 
     def __init__(self):
-        # set up username and password
+        # TODO: password needs to be further secured
         username = urllib.parse.quote_plus('joineer')
         password = urllib.parse.quote_plus('pass/word')
         mongo = MongoClient()
+        # prep the database
+        mongo.admin.command({"setFeatureCompatibilityVersion" : "3.4" })
         self.db = mongo.Joineer
-        logger.info("Database created: %s", self.db)
 
 
 JoineerDB = SingletonDecorator(JoineerDB)
