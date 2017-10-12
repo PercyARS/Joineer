@@ -6,6 +6,7 @@ from flask_restful import Api
 from Server.utilities.mongo_json_encoder import JSONEncoder
 from Server.objects.joineer_db import JoineerDB
 from Server.utilities.logger import get_flask_logger
+from Server.utilities.configParser import configParser
 __author__ = 'Peixi Zhao'
 
 
@@ -14,7 +15,7 @@ class JoineerFlask:
     api = None
 
     def __init__(self):
-        self.app = Flask("Joineer")
+        self.app = Flask(configParser.config["Flask"]["name"])
         self.app.db = JoineerDB()
         self.app.config['TRAP_BAD_REQUEST_ERRORS'] = True
         # Allow for special characters
@@ -22,7 +23,7 @@ class JoineerFlask:
         # Bundle reqparser errors into one json
         self.app.config['BUNDLE_ERRORS'] = True
         # Define the encryption difficulty
-        self.app.bcrypt_rounds = 6
+        self.app.bcrypt_rounds = configParser.config["Flask"].getint("encryption_round")
         get_flask_logger(self.app.logger)
         self.api = Api(self.app)
         '''

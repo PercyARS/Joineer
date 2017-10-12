@@ -4,6 +4,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import sys
 import os
+from Server.utilities.configParser import configParser
 
 '''
     Set up python logger
@@ -18,9 +19,9 @@ if not os.path.exists("log"):
 
 
 def get_logger(name):
-    formatter = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(threadName)s - [%(module)s] - %(message)s')
+    formatter = logging.Formatter(fmt=configParser.config["Logging"]["format"])
     console_handler = logging.StreamHandler(sys.stdout)
-    file_handler = RotatingFileHandler('log/Server.log', maxBytes=100000000, backupCount=1)
+    file_handler = RotatingFileHandler(configParser.config["Logging"]["log_location"], maxBytes=int(configParser.config["Logging"]["log_rotation_bytes"]), backupCount=1)
     console_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
     console_handler.setLevel(logging.INFO)

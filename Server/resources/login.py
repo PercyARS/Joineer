@@ -1,6 +1,6 @@
 __author__ = 'Peixi Zhao'
 
-from Server.objects.joineer_db import JoineerDB
+from Server.resources.user import Users
 import bcrypt
 from flask_restful import Resource, reqparse
 import logging
@@ -13,7 +13,7 @@ from flask import jsonify
 
 
 class Login(Resource):
-    collection = JoineerDB().db.user
+    collection = Users.collection
     logger = logging.getLogger('root')
 
     def __init__(self):
@@ -24,8 +24,6 @@ class Login(Resource):
 
     @classmethod
     def check_auth(cls, username, password):
-        if username == 'admin' and password == 'admin':
-            return True
         user = Login.collection.find_one({'username': username})
         if user is None:
             return False

@@ -1,5 +1,4 @@
 __author__ = 'Peixi Zhao'
-__author__ = 'Peixi Zhao'
 from flask_restful import Resource, reqparse
 from flask import request, jsonify, make_response
 from Server.objects.joineer_db import JoineerDB

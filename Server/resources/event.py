@@ -50,13 +50,11 @@ class Events(Resource):
         headcount_dict = dict()
         time_dict = dict()
         location_list = list()
+
         event["state"] = EventState.NEW
         event["title"] = event_dict["title"]
-
         event["payment"] = float(event_dict["payment"])
         event["joinee"] = list()
-
-        # Set location list
         location_list = [float(event_dict['location']['latitude']), float(event_dict['location']['longitude'])]
         event['location'] = location_list
 
@@ -68,11 +66,9 @@ class Events(Resource):
         # Embed host info
         for host_id in event_dict["host_id"]:
             user_json = Users.get_user_object(host_id)
-            self.logger.debug("Added host object %s", user_json)
             host_list.append(user_json)
         event["hosts"] = host_list
 
-        #TODO: Find the correct type to insert
         # Set headcount info
         if "headcount" in event_dict:
             headcount_dict = event_dict["headcount"]
@@ -113,7 +109,6 @@ class Events(Resource):
         # Massage events object
         event = self.events_massager(root_args)
 
-        #ensure Index
         self.collection.create_index([("location", pymongo.GEOSPHERE)])
         result = self.collection.insert_one(event)
         self.logger.info("Event document created: %s", result)

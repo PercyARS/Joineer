@@ -12,7 +12,7 @@ class JoineerDB:
     logger = logging.getLogger('root')
 
     def __init__(self):
-        # set up username and password
+        # TODO: password needs to be further secured
         username = urllib.parse.quote_plus('joineer')
         password = urllib.parse.quote_plus('pass/word')
         mongo = MongoClient()
