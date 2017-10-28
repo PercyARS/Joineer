@@ -133,8 +133,9 @@ class BTUser {
                 let responseMessage = "Username/Password Incorrect!"
                 loginVerification = responseMessage
             }else {
-                loginVerification = response["data"]?["password"] as! String
+                loginVerification = response["data"]?["userID"] as! String
                 self.setCurrentUser(current: true)
+                self.setUserID(userID: loginVerification)
             }
             completion(loginVerification)
 

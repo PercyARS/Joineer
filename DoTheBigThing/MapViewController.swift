@@ -52,7 +52,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let newActivityVC = NewActivityViewController()
             print(eventLatitude)
             print(eventLongitude)
-            newActivityVC.newEvent.setEventLocation(latitude: eventLatitude, longitude: eventLatitude)
+            self.newEvent.setEventLocation(latitude: eventLatitude, longitude: eventLongitude)
+            newActivityVC.newEvent = self.newEvent
             
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 if error != nil{

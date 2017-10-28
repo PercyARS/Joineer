@@ -23,6 +23,15 @@ class NewActivityViewController: UIViewController {
     @IBOutlet var maxAgeConstraintTextField: UITextField!
     @IBOutlet var countConstraintTextField: UITextField!
     @IBOutlet var paymentSytleButton: UIButton!
+    @IBOutlet var sDateMonthField: UITextField!
+    @IBOutlet var sDateDayField: UITextField!
+    @IBOutlet var sDateMinField: UITextField!
+    @IBOutlet var eDateYearField: UITextField!
+    @IBOutlet var eDateMonthField: UITextField!
+    @IBOutlet var eDateDayField: UITextField!
+    @IBOutlet var eDateHourField: UITextField!
+    @IBOutlet var eDateMinField: UITextField!
+    
     
     @IBAction func changePayment(_ sender: Any) {
         if self.newEvent.getPaymentStyle() {
@@ -88,7 +97,20 @@ class NewActivityViewController: UIViewController {
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else{
-                self.newEvent.saveEventInfo(title: self.titleTextField.text!, minHeadcount: self.maxPeopleCountTextField.text!, maxHeadcount: self.maxPeopleCountTextField.text!, payment: self.paymentTextField.text!)
+                self.newEvent.saveEventInfo(title: self.titleTextField.text!, minHeadcount: self.peopleCountTextField.text!, maxHeadcount: self.maxPeopleCountTextField.text!, payment: self.paymentTextField.text!)
+                
+                self.newEvent.setStartTime(year: self.dateTextField.text!, month: self.sDateMonthField.text!, day: self.sDateDayField.text!, hour: self.timeTextField.text!, minute: self.sDateMinField.text!)
+                
+                self.newEvent.setEndTime(year: self.eDateYearField.text!, month: self.eDateMonthField.text!, day: self.eDateDayField.text!, hour: self.eDateHourField.text!, minute: self.eDateMinField.text!)
+                /*
+                let temp = self.newEvent.getEndTime()
+                print("hahaha")
+                print(temp)
+                print("wawawa") */
+                
+                let user = UserDefaults.standard.object(forKey: "userID") as! String
+                self.newEvent.addHostID(id: user)
+                
                 self.performSegue(withIdentifier: "toAddConstraint", sender: self)
             }
             
@@ -116,7 +138,13 @@ class NewActivityViewController: UIViewController {
     
     @IBAction func publishEvent(_ sender: Any) {
         self.newEvent.populateEventDict()
-        print (self.newEvent.getEventDictionary())
+        //print (self.newEvent.getEventDictionary())
+        self.newEvent.eventPublish(completion: {response in
+            print(response)
+        })
+        
+        
+
     }
     
     func setEventLocation(lat: String, long: String) -> Void {
@@ -158,11 +186,11 @@ class NewActivityViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       /* if segue.identifier == "toMap" {
-            let nextScene = segue.destination as! NewActivityViewController
+        if segue.identifier == "toMap" {
+            let nextScene = segue.destination as! MapViewController
             let selectedEvent = self.newEvent
             nextScene.newEvent = selectedEvent
-        } */
+        }
         if segue.identifier == "toAddConstraint" {
             let nextScene = segue.destination as! NewActivityViewController
             let selectedEvent = self.newEvent

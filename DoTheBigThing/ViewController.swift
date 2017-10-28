@@ -87,6 +87,8 @@ class ViewController: UIViewController {
                     print("wtf")
                     if newLoginUser.isCurrent(){
                         DispatchQueue.main.sync {
+                            
+                            UserDefaults.standard.set(newLoginUser.getUserID(), forKey: "userID")
                             self.performSegue(withIdentifier: "showMainInterface" , sender: self)
                             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                             let loginController = storyBoard.instantiateViewController(withIdentifier: "mainInterface")
