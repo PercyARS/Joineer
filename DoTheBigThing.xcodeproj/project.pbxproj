@@ -15,6 +15,8 @@
 		4556A7C91F37928200E5730B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7C81F37928200E5730B /* MapViewController.swift */; };
 		4556A7CC1F379CA100E5730B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4556A7CB1F379CA100E5730B /* CoreLocation.framework */; };
 		4556A7CE1F37EBC300E5730B /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4556A7CD1F37EBC300E5730B /* ActivityDetailViewController.swift */; };
+		459896BC1FE2F04900E891AA /* PublishedEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459896BB1FE2F04900E891AA /* PublishedEventsTableViewController.swift */; };
+		459896BE1FE2FF0B00E891AA /* PublishedEventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459896BD1FE2FF0B00E891AA /* PublishedEventList.swift */; };
 		BC60F0F41F0051E800805DED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60F0F31F0051E800805DED /* AppDelegate.swift */; };
 		BC60F0F61F0051E800805DED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC60F0F51F0051E800805DED /* ViewController.swift */; };
 		BC60F0F91F0051E800805DED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC60F0F71F0051E800805DED /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 		4556A7C81F37928200E5730B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4556A7CB1F379CA100E5730B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4556A7CD1F37EBC300E5730B /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
+		459896BB1FE2F04900E891AA /* PublishedEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishedEventsTableViewController.swift; sourceTree = "<group>"; };
+		459896BD1FE2FF0B00E891AA /* PublishedEventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishedEventList.swift; sourceTree = "<group>"; };
 		BC60F0F01F0051E800805DED /* DoTheBigThing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoTheBigThing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC60F0F31F0051E800805DED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC60F0F51F0051E800805DED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,11 +86,13 @@
 			children = (
 				45140C431F5DF61900043CF6 /* BTUser.swift */,
 				454C2E1A1F7713E300F8CEC2 /* BTEvent.swift */,
+				459896BD1FE2FF0B00E891AA /* PublishedEventList.swift */,
 				BC60F0F31F0051E800805DED /* AppDelegate.swift */,
 				BC60F0F51F0051E800805DED /* ViewController.swift */,
 				4556A7C61F378B9900E5730B /* NewActivityViewController.swift */,
 				4556A7C81F37928200E5730B /* MapViewController.swift */,
 				4556A7C41F36916900E5730B /* MyActivityViewController.swift */,
+				459896BB1FE2F04900E891AA /* PublishedEventsTableViewController.swift */,
 				BC60F0F71F0051E800805DED /* Main.storyboard */,
 				4556A7CD1F37EBC300E5730B /* ActivityDetailViewController.swift */,
 				BC60F0FA1F0051E800805DED /* Assets.xcassets */,
@@ -170,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459896BE1FE2FF0B00E891AA /* PublishedEventList.swift in Sources */,
 				BC60F0F61F0051E800805DED /* ViewController.swift in Sources */,
 				4556A7C91F37928200E5730B /* MapViewController.swift in Sources */,
 				4556A7CE1F37EBC300E5730B /* ActivityDetailViewController.swift in Sources */,
@@ -177,6 +184,7 @@
 				454C2E1B1F7713E300F8CEC2 /* BTEvent.swift in Sources */,
 				45140C441F5DF61900043CF6 /* BTUser.swift in Sources */,
 				4556A7C31F368C7100E5730B /* MyActivity.xcdatamodeld in Sources */,
+				459896BC1FE2F04900E891AA /* PublishedEventsTableViewController.swift in Sources */,
 				4556A7C51F36916900E5730B /* MyActivityViewController.swift in Sources */,
 				4556A7C71F378B9900E5730B /* NewActivityViewController.swift in Sources */,
 			);

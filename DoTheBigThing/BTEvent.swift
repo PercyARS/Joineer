@@ -282,8 +282,6 @@ class BTEvent {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         //request.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
         let postJSON = try? JSONSerialization.data(withJSONObject: input)
-        print("diaosobig")
-        print (postJSON!)
         request.httpBody = postJSON
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse? , error: Error?) in

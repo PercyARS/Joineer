@@ -68,7 +68,6 @@ class ViewController: UIViewController {
                     let newSignUpUser = BTUser()
                     newSignUpUser.usersignUp(userName: self.emailTextField.text!, password: self.passwordTextField.text!, age: self.ageTextField.text!, gender: self.genderTextField.text!, completion: {response in
                         print(response)
-                        print("wtf")
                         DispatchQueue.main.sync{
                             let alert = UIAlertController(title: "SignUp", message: response, preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK" , style: .default, handler: { (action) in

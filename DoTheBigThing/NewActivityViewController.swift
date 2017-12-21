@@ -137,6 +137,13 @@ class NewActivityViewController: UIViewController {
     }
     
     @IBAction func publishEvent(_ sender: Any) {
+        self.newEvent.setEventTitle(title: self.titleTextField.text!)
+        let temp = Int(self.peopleCountTextField.text!)!
+        self.newEvent.setEventHeadCount(count: temp)
+        let temp2 = Int(self.maxPeopleCountTextField.text!)!
+        self.newEvent.setMaxEventHeadCount(count: temp2)
+        let temp3 = Double(self.paymentTextField.text!)!
+        self.newEvent.setEventAmount(payment: temp3)
         self.newEvent.populateEventDict()
         //print (self.newEvent.getEventDictionary())
         self.newEvent.eventPublish(completion: {response in

@@ -629,18 +629,34 @@
         <!--Root View Controller-->
         <scene sceneID="cHZ-nf-aRK">
             <objects>
-                <tableViewController id="qWk-ce-bi6" sceneMemberID="viewController">
+                <tableViewController id="qWk-ce-bi6" customClass="PublishedEventsTableViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BG7-RL-glo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZkW-JA-5A7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pCell" textLabel="C30-jX-9bV" detailTextLabel="322-to-uyD" style="IBUITableViewCellStyleValue1" id="ZkW-JA-5A7">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkW-JA-5A7" id="y5w-E8-1Ee">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C30-jX-9bV">
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="322-to-uyD">
+                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -675,7 +691,7 @@
         <!--Item-->
         <scene sceneID="6nC-e6-Wah">
             <objects>
-                <navigationController restorationIdentifier="mainInterface" storyboardIdentifier="mainInterface" id="OE0-pi-Myl" sceneMemberID="viewController">
+                <navigationController id="OE0-pi-Myl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="7NA-65-3PV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ERv-pO-j5V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -692,7 +708,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mjH-FN-2Vx">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AhZ-4L-B2S" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="mainInterface" storyboardIdentifier="mainInterface" automaticallyAdjustsScrollViewInsets="NO" id="AhZ-4L-B2S" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DAH-Jw-vtY">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -710,7 +726,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="60c-k5-eng"/>
         <segue reference="7TM-Qr-CZK"/>
-        <segue reference="Hcy-fI-qYs"/>
     </inferredMetricsTieBreakers>
 </document>
