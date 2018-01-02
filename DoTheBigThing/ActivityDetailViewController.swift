@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import CoreData
+import CoreLocation
+
 
 class ActivityDetailViewController: UIViewController {
     
@@ -17,11 +18,44 @@ class ActivityDetailViewController: UIViewController {
     @IBOutlet var peopleCountLabel: UILabel!
     @IBOutlet var paymentLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
+    var EventToDisplay: BTEvent = BTEvent()
+    
+    
+    func locationConvert(){
+        let location = CLLocation(latitude: Double(self.EventToDisplay.getLatitude())!, longitude: Double(self.EventToDisplay.getLongitude())!)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+            if error != nil{
+                print (error!)
+            } else{
+                if let placemark = placemarks?[0] {
+                    if placemark.locality != nil {
+                        let city = placemark.locality
+                        self.locationLabel.text = city
+                    }
+                    
+                }
+            }
+        })
+        
+    }
     
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.titleLabel.text = self.EventToDisplay.getEventTitle()
+        self.peopleCountLabel.text = String(self.EventToDisplay.getEventHeadCount()) + " - " + String(self.EventToDisplay.getMaxEventHeadCount())
+        self.paymentLabel.text = "$" + String(self.EventToDisplay.getEventAmount())
+        self.locationConvert()
+        let startUnix = self.EventToDisplay.getTimeDict()["starttime"]
+        let endUnix = self.EventToDisplay.getTimeDict()["endtime"]
+        let startDate = self.EventToDisplay.dateConvert(unixTime: startUnix!)
+        let endDate = self.EventToDisplay.dateConvert(unixTime: endUnix!)
+        self.dateLabel.text = startDate
+        self.timeLabel.text = endDate
+        
+        
+        /*
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
@@ -59,7 +93,7 @@ class ActivityDetailViewController: UIViewController {
         }
 
         
-
+   */
         // Do any additional setup after loading the view.
     }
 

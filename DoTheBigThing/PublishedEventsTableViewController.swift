@@ -16,8 +16,32 @@ class PublishedEventsTableViewController: UITableViewController, CLLocationManag
     var refresher: UIRefreshControl!
     var newPList: PublishedEventList!
     var displayList: [[String:AnyObject]] = []
+    var displayEvent: BTEvent!
+    
 
 
+    func eventCreate(tableIndex: Int) -> BTEvent {
+        let newEvent = BTEvent()
+      //  let constraintsArray: [Dictionary<String, AnyObject>] = self.displayList[tableIndex]["constraint"] as! [Dictionary<String, AnyObject>]
+        let timeDict = self.displayList[tableIndex]["time"]
+        let minEventHeadCount = self.displayList[tableIndex]["headcount"]?["min"]
+        let maxEventHeadCount = self.displayList[tableIndex]["headcount"]?["max"]
+        let eventPayAmount = self.displayList[tableIndex]["payment"]
+        let eventTitle = self.displayList[tableIndex]["title"]
+        let latitude = self.displayList[tableIndex]["location"]?["latitude"] as! Double
+        let longitude = self.displayList[tableIndex]["location"]?["longitude"] as! Double
+        let hosts = self.displayList[tableIndex]["hosts"]
+        newEvent.setEventTitle(title: eventTitle as! String)
+        newEvent.setTimeDict(timeDct: timeDict as! [String : Double])
+        newEvent.setEventAmount(payment: eventPayAmount as! Double)
+        newEvent.setEventHeadCount(count: minEventHeadCount as! Int)
+        newEvent.setMaxEventHeadCount(count: maxEventHeadCount as! Int)
+        newEvent.setEventLocation(latitude: String(latitude), longitude: String(longitude))
+        newEvent.setHosts(hostsList: hosts as! [Dictionary<String, AnyObject>])
+        //newEvent.setConstraintsArray(constraints: constraintsArray)
+        return newEvent
+        
+    }
     
     func refresh() {
         self.displayList = []
@@ -48,6 +72,8 @@ class PublishedEventsTableViewController: UITableViewController, CLLocationManag
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresher.addTarget(self, action: #selector(PublishedEventsTableViewController.refresh), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresher)
+        
+        self.refresh()
 
         
         
@@ -93,7 +119,20 @@ class PublishedEventsTableViewController: UITableViewController, CLLocationManag
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dispEvent = self.eventCreate(tableIndex: indexPath.row)
+        self.displayEvent = dispEvent
+        performSegue(withIdentifier: "ToActivityDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToActivityDetails" {
+            let nextScene = segue.destination as! ActivityDetailViewController
+            nextScene.EventToDisplay = self.displayEvent
+        }
+    }
+ 
+ /*   override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = self.displayList.count - 1
         if indexPath.row == lastElement {
             let pageNum = (lastElement/25) + 1
@@ -112,6 +151,7 @@ class PublishedEventsTableViewController: UITableViewController, CLLocationManag
         }
         
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.

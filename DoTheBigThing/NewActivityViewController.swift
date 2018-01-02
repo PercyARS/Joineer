@@ -102,11 +102,6 @@ class NewActivityViewController: UIViewController {
                 self.newEvent.setStartTime(year: self.dateTextField.text!, month: self.sDateMonthField.text!, day: self.sDateDayField.text!, hour: self.timeTextField.text!, minute: self.sDateMinField.text!)
                 
                 self.newEvent.setEndTime(year: self.eDateYearField.text!, month: self.eDateMonthField.text!, day: self.eDateDayField.text!, hour: self.eDateHourField.text!, minute: self.eDateMinField.text!)
-                /*
-                let temp = self.newEvent.getEndTime()
-                print("hahaha")
-                print(temp)
-                print("wawawa") */
                 
                 let user = UserDefaults.standard.object(forKey: "userID") as! String
                 self.newEvent.addHostID(id: user)
@@ -144,8 +139,12 @@ class NewActivityViewController: UIViewController {
         self.newEvent.setMaxEventHeadCount(count: temp2)
         let temp3 = Double(self.paymentTextField.text!)!
         self.newEvent.setEventAmount(payment: temp3)
+        self.newEvent.setStartTime(year: self.dateTextField.text!, month: self.sDateMonthField.text!, day: self.sDateDayField.text!, hour: self.timeTextField.text!, minute: self.sDateMinField.text!)
+        
+        self.newEvent.setEndTime(year: self.eDateYearField.text!, month: self.eDateMonthField.text!, day: self.eDateDayField.text!, hour: self.eDateHourField.text!, minute: self.eDateMinField.text!)
+        let user = UserDefaults.standard.object(forKey: "userID") as! String
+        self.newEvent.addHostID(id: user)
         self.newEvent.populateEventDict()
-        //print (self.newEvent.getEventDictionary())
         self.newEvent.eventPublish(completion: {response in
             print(response)
         })

@@ -130,8 +130,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVx-n8-48h">
-                                <rect key="frame" x="16" y="116" width="36" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVx-n8-48h">
+                                <rect key="frame" x="16" y="116" width="38" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -144,8 +144,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuI-3q-PGY">
-                                <rect key="frame" x="16" y="162" width="38" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuI-3q-PGY">
+                                <rect key="frame" x="16" y="162" width="30" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buQ-dL-uzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4512.8000000000002" y="-1049.3253373313344"/>
+            <point key="canvasLocation" x="4513" y="359"/>
         </scene>
         <!--New Constraint-->
         <scene sceneID="y75-hP-s4w">
@@ -343,9 +343,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="LnC-8d-PSZ" kind="show" identifier="ToActivityDetails" id="Apg-Hn-Q2d"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpP-eD-3aR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -626,10 +623,10 @@
             </objects>
             <point key="canvasLocation" x="6037.6000000000004" y="-374.66266866566718"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Published Events-->
         <scene sceneID="cHZ-nf-aRK">
             <objects>
-                <tableViewController id="qWk-ce-bi6" customClass="PublishedEventsTableViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Published Events" id="qWk-ce-bi6" customClass="PublishedEventsTableViewController" customModule="DoTheBigThing" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BG7-RL-glo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -665,7 +662,10 @@
                             <outlet property="delegate" destination="qWk-ce-bi6" id="eyx-69-xKq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Mdv-o5-D6n"/>
+                    <navigationItem key="navigationItem" title="Published Events" id="Mdv-o5-D6n"/>
+                    <connections>
+                        <segue destination="LnC-8d-PSZ" kind="show" identifier="ToActivityDetails" id="HRF-Il-zln"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnI-HU-JpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -726,7 +726,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="60c-k5-eng"/>
+        <segue reference="Hcy-fI-qYs"/>
         <segue reference="7TM-Qr-CZK"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -23,7 +23,27 @@ class BTEvent {
     let startDate = NSDateComponents()
     let endDate = NSDateComponents()
     var hostId: [String] = []
+    var hosts: [Dictionary<String, AnyObject>] = []
     var urladdress = "http://52.60.73.69:5000"
+    
+    
+    func dateConvert(unixTime: Double) -> String {
+        let date = NSDate(timeIntervalSince1970: unixTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        dateFormatter.timeZone = TimeZone.current
+        let localDate = dateFormatter.string(from: date as Date)
+        return localDate
+    }
+    
+    func setHosts(hostsList: [Dictionary<String, AnyObject>]) -> Void {
+        self.hosts = hostsList
+    }
+    
+    func getHosts() -> [Dictionary<String, AnyObject>] {
+        return self.hosts
+    }
     
     func getPaymentStyle() -> Bool {
         return self.paymentStyle
@@ -51,6 +71,10 @@ class BTEvent {
     
     func getConstraintsArray() -> [Dictionary<String, AnyObject>] {
         return self.constraintsArray
+    }
+    
+    func setConstraintsArray(constraints: [Dictionary<String, AnyObject>]) -> Void{
+        self.constraintsArray = constraints
     }
     
     func getEventTitle() -> String {
@@ -140,6 +164,10 @@ class BTEvent {
     func populateTimeDict() -> Void {
         self.timeDict["starttime"] = self.getStartTime()
         self.timeDict["endtime"] = self.getEndTime()
+    }
+    
+    func setTimeDict(timeDct: [String: Double]) -> Void{
+        self.timeDict = timeDct
     }
     
     func getTimeDict() -> [String: Double] {
